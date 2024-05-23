@@ -12,7 +12,10 @@ from inspect import ismethod
 
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
-from django.utils.encoding import smart_text
+try:
+    from django.utils.encoding import smart_text
+except ImportError:
+    from django.utils.encoding import smart_str as smart_text
 from django.db.models import Model
 from django.conf import settings
 from django import template, VERSION
